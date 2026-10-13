@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>서버 사양 검증 · Server Validator</title>
+  <link rel="stylesheet" href="/styles.css"><script src="/composition.js" defer></script><script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#input"><span class="brand-mark">S<span>V</span></span><span>Server Validator<small>서버 사양 검증</small></span></a>
+    <div class="project-label">검토 작업</div><div class="project"><span class="project-dot"></span><span>새 서버 구성 검토<small id="project-model">문서 입력 대기</small></span></div>
+    <nav aria-label="검토 단계">
+      <button data-step="0"><span class="step-icon">1</span><span>문서 입력<small>요구사항과 견적 붙여넣기</small></span><i></i></button>
+      <button data-step="1"><span class="step-icon">2</span><span>추출값 검토<small>공통 사양과 원문 대조</small></span><i></i></button>
+      <button data-step="2"><span class="step-icon">3</span><span>판정 확인<small>요구 충족 · 장착 호환</small></span><i></i></button>
+      <button data-step="3"><span class="step-icon">4</span><span>서버 이미지 구성<small>실제 스텐실에 부품 배치</small></span><i></i></button>
+    </nav>
+    <div class="sidebar-bottom"><button class="side-link" id="library-open">▧ 이미지 보관함 <span id="asset-count">0</span></button><button class="side-link" id="rules-open">ⓘ 판정 원칙</button><div class="accuracy-note"><span>근거가 있어야 판정합니다.</span><p>누락되거나 애매한 값은<br>‘확인 필요’로 남깁니다.</p></div><small>흐름 검토용 목업 · v0.1</small></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span>검토 작업 <b>/</b> <span id="breadcrumb">문서 입력</span></span><div><span class="mock-tag">목업</span><span class="connection"><i></i> AI 미연결</span><button class="button small" id="save-draft">임시 저장</button></div></header>
+    <main id="main"></main>
+  </div>
+  <dialog id="modal"><div id="modal-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <input id="image-upload" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden>
+  <input id="stencil-upload" type="file" accept=".vssx,.vsdx" hidden>
+  <input id="calibration-upload" type="file" accept=".json" hidden>
+</body>
+</html>

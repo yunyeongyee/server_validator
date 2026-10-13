@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "notice": "공식 Technical Guide 원문 접근이 차단되어 아래 후보 사양은 검증 대기 상태입니다. verified=false인 조건은 호환 판정에 사용하지 않습니다. 이미지 좌표는 사용자 PC에서 별도로 보정합니다.",
+  "servers": [
+    {
+      "id": "r760", "name": "Dell PowerEdge R760", "aliases": ["PowerEdge R760", "Dell R760", "R760"],
+      "verified": false, "form_factor": "2U", "cpu_sockets": 2,
+      "cpu_mapping": {"1": "CPU1", "2": "CPU2"},
+      "slots": [], "risers": [],
+      "bay_options": [{"id": "8x35", "count": 8, "size_in": 3.5, "interfaces": ["SAS", "SATA"]}, {"id": "16x25", "count": 16, "size_in": 2.5, "interfaces": ["SAS", "SATA"]}, {"id": "24x25", "count": 24, "size_in": 2.5, "interfaces": ["SAS", "SATA", "NVMe"]}],
+      "psu": {"count": 2, "redundancy": "1+1", "options_w": []},
+      "drive_options": [],
+      "sources": [{"url": "https://www.delltechnologies.com/asset/en-us/products/servers/technical-support/poweredge-r760-technical-guide.pdf", "title": "PowerEdge R760 Technical Guide", "verified": false, "sections": ["Technical specifications", "Storage", "Expansion cards and expansion card risers", "Power supplies"]}]
+    },
+    {
+      "id": "r660", "name": "Dell PowerEdge R660", "aliases": ["PowerEdge R660", "Dell R660", "R660"],
+      "verified": false, "form_factor": "1U", "cpu_sockets": 2,
+      "cpu_mapping": {"1": "CPU1", "2": "CPU2"},
+      "slots": [], "risers": [],
+      "bay_options": [{"id": "8x25", "count": 8, "size_in": 2.5, "interfaces": ["SAS", "SATA"]}, {"id": "10x25", "count": 10, "size_in": 2.5, "interfaces": ["SAS", "SATA", "NVMe"]}],
+      "psu": {"count": 2, "redundancy": "1+1", "options_w": []}, "drive_options": [],
+      "sources": [{"url": "https://www.delltechnologies.com/asset/en-us/products/servers/technical-support/poweredge-r660-technical-guide.pdf", "title": "PowerEdge R660 Technical Guide", "verified": false, "sections": ["Technical specifications", "Storage", "Expansion cards and expansion card risers", "Power supplies"]}]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+.venv-build/
+node_modules/
+.local/
+*.calibration.json
+*.image-mappings.json
+test-results/
+playwright-report/
+dist/
+build/
+*.spec

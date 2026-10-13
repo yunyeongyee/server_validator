@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "notice": "견적 문자열 매칭용 후보 카탈로그. 원문으로 확인하기 전에는 verified=false이며 장착 지원을 보증하지 않습니다. PCIe와 OCP 이미지는 서로 대체하지 않습니다.",
+  "components": [
+    {"id": "bcm5720", "name": "Broadcom 5720", "aliases": ["5720", "BCM5720"], "category": "nic", "mount": "LOM", "ports": 2, "speed_gbps": 1, "verified": false, "source": "https://www.broadcom.com/products/ethernet-connectivity/network-adapters/1gb-nic-ocp"},
+    {"id": "bcm57504", "name": "Broadcom 57504", "aliases": ["57504", "BCM57504"], "category": "nic", "mount": "OCP", "ports": 4, "speed_gbps": 25, "supported_speeds_gbps": [10, 25], "verified": false, "source": "https://www.broadcom.com/products/ethernet-connectivity/network-adapters/25gb-nic-ocp"},
+    {"id": "qle2772", "name": "QLogic QLE2772", "aliases": ["QLE2772", "QLogic 2772", "2772"], "category": "hba", "mount": "PCIe", "ports": 2, "speed_gbps": 32, "height": "full", "verified": false, "source": "https://www.marvell.com/products/fibre-channel-adapters.html"},
+    {"id": "x710", "name": "Intel X710", "aliases": ["X710"], "category": "nic", "mount": "PCIe", "verified": false, "source": "https://www.intel.com/content/www/us/en/products/details/ethernet/700-network-adapters/x710-network-adapters.html"}
+  ]
+}

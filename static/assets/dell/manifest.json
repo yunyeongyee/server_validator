@@ -1,0 +1,1121 @@
+[
+  {
+    "id": "e6fa58500c781cb53e19",
+    "name": "Fibre SFP+",
+    "aliases": [
+      "Fibre SFP+"
+    ],
+    "file": "e6fa58500c781cb53e19.png",
+    "category": "other",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image1.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "7f4b774a49389b562f85",
+    "name": "14G 2.5 SATA SSD (H)",
+    "aliases": [
+      "14G 2.5 SATA SSD (H)",
+      "14G 2.5 SAS SSD (H)",
+      "14G 2.5 SAS (H)",
+      "14G 2.5 NLSAS (H)",
+      "14G 2.5 SATA (H)"
+    ],
+    "file": "7f4b774a49389b562f85.png",
+    "category": "disk",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image2.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "f41db08997344b0d6207",
+    "name": "14G 2.5 SATA SSD (H)",
+    "aliases": [
+      "14G 2.5 SATA SSD (H)"
+    ],
+    "file": "f41db08997344b0d6207.png",
+    "category": "disk",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image3.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "e7043f8374ac30c403e9",
+    "name": "14G 2.5 SATA SSD (H)",
+    "aliases": [
+      "14G 2.5 SATA SSD (H)"
+    ],
+    "file": "e7043f8374ac30c403e9.png",
+    "category": "disk",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image4.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "b8ad767d9cf6b08e2674",
+    "name": "14G 2.5 SAS SSD (H)",
+    "aliases": [
+      "14G 2.5 SAS SSD (H)"
+    ],
+    "file": "b8ad767d9cf6b08e2674.png",
+    "category": "disk",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image5.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "ca65eec5220778ba9df8",
+    "name": "14G 2.5 SAS SSD (H)",
+    "aliases": [
+      "14G 2.5 SAS SSD (H)"
+    ],
+    "file": "ca65eec5220778ba9df8.png",
+    "category": "disk",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image6.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "db277b5a8f3691a4dbb6",
+    "name": "14G 2.5 SAS (H)",
+    "aliases": [
+      "14G 2.5 SAS (H)"
+    ],
+    "file": "db277b5a8f3691a4dbb6.png",
+    "category": "disk",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image7.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "b3a8812ba4472250cb7f",
+    "name": "14G 2.5 NLSAS (H)",
+    "aliases": [
+      "14G 2.5 NLSAS (H)"
+    ],
+    "file": "b3a8812ba4472250cb7f.png",
+    "category": "disk",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image8.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "f20e42604828c46c40c0",
+    "name": "14G 2.5 SAS (H)",
+    "aliases": [
+      "14G 2.5 SAS (H)"
+    ],
+    "file": "f20e42604828c46c40c0.png",
+    "category": "disk",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image9.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "e6e2736bb349dac8a1a2",
+    "name": "14G 2.5 SAS (H)",
+    "aliases": [
+      "14G 2.5 SAS (H)"
+    ],
+    "file": "e6e2736bb349dac8a1a2.png",
+    "category": "disk",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image10.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "1b76168d9d7254af4ccb",
+    "name": "14G 2.5 SATA (H)",
+    "aliases": [
+      "14G 2.5 SATA (H)"
+    ],
+    "file": "1b76168d9d7254af4ccb.png",
+    "category": "disk",
+    "model": null,
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image11.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "d1fd4798547aaa57a45d",
+    "name": "XR2 Front",
+    "aliases": [
+      "XR2 Front"
+    ],
+    "file": "d1fd4798547aaa57a45d.png",
+    "category": "server",
+    "model": "XR2",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image12.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "56d1b45eb58b4e80fe12",
+    "name": "XR2 Front (OEM)",
+    "aliases": [
+      "XR2 Front (OEM)"
+    ],
+    "file": "56d1b45eb58b4e80fe12.png",
+    "category": "server",
+    "model": "XR2",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image13.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "7a6b81d12432ca6453bd",
+    "name": "XR2 Front Open",
+    "aliases": [
+      "XR2 Front Open"
+    ],
+    "file": "7a6b81d12432ca6453bd.png",
+    "category": "server",
+    "model": "XR2",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image14.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "3626bdf3486f1a67989e",
+    "name": "XR8620t Compute Sled",
+    "aliases": [
+      "XR8620t Compute Sled"
+    ],
+    "file": "3626bdf3486f1a67989e.png",
+    "category": "other",
+    "model": "XR8620T",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image15.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "b86e96eb3e6bba3b7cdf",
+    "name": "XR2 Rear",
+    "aliases": [
+      "XR2 Rear"
+    ],
+    "file": "b86e96eb3e6bba3b7cdf.png",
+    "category": "server",
+    "model": "XR2",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image16.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "11e8d63ed05b41524871",
+    "name": "XR11 FA Front",
+    "aliases": [
+      "XR11 FA Front"
+    ],
+    "file": "11e8d63ed05b41524871.png",
+    "category": "server",
+    "model": "XR11",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image17.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "99a09c329a7998415ad9",
+    "name": "XR11 FA Front",
+    "aliases": [
+      "XR11 FA Front"
+    ],
+    "file": "99a09c329a7998415ad9.png",
+    "category": "server",
+    "model": "XR11",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image18.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "9de3b01a3c8ae441729d",
+    "name": "XR11 FA Rear",
+    "aliases": [
+      "XR11 FA Rear"
+    ],
+    "file": "9de3b01a3c8ae441729d.png",
+    "category": "server",
+    "model": "XR11",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image19.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "34a06271355e7b867737",
+    "name": "XR8610t Compute Sled",
+    "aliases": [
+      "XR8610t Compute Sled"
+    ],
+    "file": "34a06271355e7b867737.png",
+    "category": "other",
+    "model": "XR8610T",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image20.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "6316064fc54ffeff6b8f",
+    "name": "XR11 RA Front",
+    "aliases": [
+      "XR11 RA Front"
+    ],
+    "file": "6316064fc54ffeff6b8f.png",
+    "category": "server",
+    "model": "XR11",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image21.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "778522b8dc4a31286eef",
+    "name": "XR11 RA Bezel Front",
+    "aliases": [
+      "XR11 RA Bezel Front"
+    ],
+    "file": "778522b8dc4a31286eef.png",
+    "category": "server",
+    "model": "XR11",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image22.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "301af8f224a18d98c0da",
+    "name": "XR11 RA OEM Bezel Front",
+    "aliases": [
+      "XR11 RA OEM Bezel Front"
+    ],
+    "file": "301af8f224a18d98c0da.png",
+    "category": "server",
+    "model": "XR11",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image23.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "c5ab9348a336bc2c611a",
+    "name": "XR8000r Rear",
+    "aliases": [
+      "XR8000r Rear"
+    ],
+    "file": "c5ab9348a336bc2c611a.png",
+    "category": "server",
+    "model": "XR8000R",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image24.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "1dfc417dd2e6c8a48aa2",
+    "name": "XR11 Drive Military Bracket",
+    "aliases": [
+      "XR11 Drive Military Bracket"
+    ],
+    "file": "1dfc417dd2e6c8a48aa2.png",
+    "category": "disk",
+    "model": "XR11",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image25.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "ec219355d4bce629f035",
+    "name": "XR8000r Front",
+    "aliases": [
+      "XR8000r Front"
+    ],
+    "file": "ec219355d4bce629f035.png",
+    "category": "server",
+    "model": "XR8000R",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image26.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "546a03c69f1a68d3b8d6",
+    "name": "XR11 RA Rear",
+    "aliases": [
+      "XR11 RA Rear"
+    ],
+    "file": "546a03c69f1a68d3b8d6.png",
+    "category": "server",
+    "model": "XR11",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image27.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "f4e4b604400b347595b8",
+    "name": "XR11 RA Rear",
+    "aliases": [
+      "XR11 RA Rear"
+    ],
+    "file": "f4e4b604400b347595b8.png",
+    "category": "server",
+    "model": "XR11",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image28.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "23a5c8a2e1dc383421ce",
+    "name": "XR12 FA Front",
+    "aliases": [
+      "XR12 FA Front"
+    ],
+    "file": "23a5c8a2e1dc383421ce.png",
+    "category": "server",
+    "model": "XR12",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image29.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "50f9795f24af599198a0",
+    "name": "XR12 FA Bezel Front",
+    "aliases": [
+      "XR12 FA Bezel Front"
+    ],
+    "file": "50f9795f24af599198a0.png",
+    "category": "server",
+    "model": "XR12",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image30.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "5215339c012394bb178d",
+    "name": "XR12 FA Front",
+    "aliases": [
+      "XR12 FA Front"
+    ],
+    "file": "5215339c012394bb178d.png",
+    "category": "server",
+    "model": "XR12",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image31.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "a1745799ff80b7b1e21c",
+    "name": "XR7620 FA 4D 2.5 Front",
+    "aliases": [
+      "XR7620 FA 4D 2.5 Front"
+    ],
+    "file": "a1745799ff80b7b1e21c.png",
+    "category": "server",
+    "model": "XR7620",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image52.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "ffd316ec721ab9400295",
+    "name": "XR4000z Front",
+    "aliases": [
+      "XR4000z Front"
+    ],
+    "file": "ffd316ec721ab9400295.png",
+    "category": "server",
+    "model": "XR4000Z",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image53.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "2d18590c65fa85f56864",
+    "name": "XR4000r Rear (RP)",
+    "aliases": [
+      "XR4000r Rear (RP)"
+    ],
+    "file": "2d18590c65fa85f56864.png",
+    "category": "server",
+    "model": "XR4000R",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image54.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "40cc4e74ed60a0c4334c",
+    "name": "XR4000z Security Bezel",
+    "aliases": [
+      "XR4000z Security Bezel"
+    ],
+    "file": "40cc4e74ed60a0c4334c.png",
+    "category": "other",
+    "model": "XR4000Z",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image55.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "b3abfaebfe74c769901f",
+    "name": "XR4000z Rear (FP)",
+    "aliases": [
+      "XR4000z Rear (FP)"
+    ],
+    "file": "b3abfaebfe74c769901f.png",
+    "category": "server",
+    "model": "XR4000Z",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image56.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "2cc5002b03863e7271cb",
+    "name": "XR4000z Security Bracket",
+    "aliases": [
+      "XR4000z Security Bracket"
+    ],
+    "file": "2cc5002b03863e7271cb.png",
+    "category": "other",
+    "model": "XR4000Z",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image57.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "7f7a5f82a47789daee84",
+    "name": "XR5610 RA Rear",
+    "aliases": [
+      "XR5610 RA Rear"
+    ],
+    "file": "7f7a5f82a47789daee84.png",
+    "category": "server",
+    "model": "XR5610",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image58.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "864352fd9b1518c3d2e2",
+    "name": "XR5610 FA Front",
+    "aliases": [
+      "XR5610 FA Front",
+      "XR5610 RA Rear"
+    ],
+    "file": "864352fd9b1518c3d2e2.png",
+    "category": "server",
+    "model": "XR5610",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image59.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "e7391a4afcf3b09a2394",
+    "name": "XR4510c Compute Sled",
+    "aliases": [
+      "XR4510c Compute Sled"
+    ],
+    "file": "e7391a4afcf3b09a2394.png",
+    "category": "other",
+    "model": "XR4510C",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image60.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "c881cb51ecb754e97826",
+    "name": "XR4520c Compute Sled",
+    "aliases": [
+      "XR4520c Compute Sled"
+    ],
+    "file": "c881cb51ecb754e97826.png",
+    "category": "other",
+    "model": "XR4520C",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image61.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "826758daa71278127e3d",
+    "name": "XR4000z Rear (RP)",
+    "aliases": [
+      "XR4000z Rear (RP)"
+    ],
+    "file": "826758daa71278127e3d.png",
+    "category": "server",
+    "model": "XR4000Z",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image62.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "f45c56344bf937322526",
+    "name": "XR5610 RA Front",
+    "aliases": [
+      "XR5610 RA Front"
+    ],
+    "file": "f45c56344bf937322526.png",
+    "category": "server",
+    "model": "XR5610",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image63.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "3e5ed7d7e04541f31c51",
+    "name": "XR5610 FA Rear",
+    "aliases": [
+      "XR5610 FA Rear",
+      "XR5610 RA Front"
+    ],
+    "file": "3e5ed7d7e04541f31c51.png",
+    "category": "server",
+    "model": "XR5610",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image64.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "82708d6340ca99271224",
+    "name": "XR4000 PSU",
+    "aliases": [
+      "XR4000 PSU"
+    ],
+    "file": "82708d6340ca99271224.png",
+    "category": "psu",
+    "model": "XR4000",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image65.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "94b09e2bee00f33d65a0",
+    "name": "XR4000w Witness Sled",
+    "aliases": [
+      "XR4000w Witness Sled"
+    ],
+    "file": "94b09e2bee00f33d65a0.png",
+    "category": "other",
+    "model": "XR4000W",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image66.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "c0c91e9bca2a619297ec",
+    "name": "XR5610 Bezel Front",
+    "aliases": [
+      "XR5610 Bezel Front"
+    ],
+    "file": "c0c91e9bca2a619297ec.png",
+    "category": "server",
+    "model": "XR5610",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image67.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "c77f8a362cc02265ad96",
+    "name": "XR12 RA Front",
+    "aliases": [
+      "XR12 RA Front"
+    ],
+    "file": "c77f8a362cc02265ad96.png",
+    "category": "server",
+    "model": "XR12",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image36.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "42bda1af420e0f05dd14",
+    "name": "XR5610 FA Rear",
+    "aliases": [
+      "XR5610 FA Rear"
+    ],
+    "file": "42bda1af420e0f05dd14.png",
+    "category": "server",
+    "model": "XR5610",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image68.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "9d92958cd84764adfe0b",
+    "name": "XR5610 FA Front",
+    "aliases": [
+      "XR5610 FA Front"
+    ],
+    "file": "9d92958cd84764adfe0b.png",
+    "category": "server",
+    "model": "XR5610",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image69.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "3008179b7760cc530eda",
+    "name": "XR7620 FA 4D 2.5 Front",
+    "aliases": [
+      "XR7620 FA 4D 2.5 Front",
+      "XR7620 FA 8D E3.S Front",
+      "XR7620 RA 4D 2.5 Rear",
+      "XR7620 RA 8D E3.S Rear"
+    ],
+    "file": "3008179b7760cc530eda.png",
+    "category": "server",
+    "model": "XR7620",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image35.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "8a3a640e352c52efe185",
+    "name": "XR7620 FA 4D 2.5 Front",
+    "aliases": [
+      "XR7620 FA 4D 2.5 Front",
+      "XR7620 FA 8D E3.S Front",
+      "XR7620 RA 4D 2.5 Rear",
+      "XR7620 RA 8D E3.S Rear"
+    ],
+    "file": "8a3a640e352c52efe185.png",
+    "category": "server",
+    "model": "XR7620",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image34.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "1b544cdc46f137a63b96",
+    "name": "XR7620 FA Rear",
+    "aliases": [
+      "XR7620 FA Rear",
+      "XR7620 RA 4D 2.5 Rear",
+      "XR7620 RA 8D E3.S Rear"
+    ],
+    "file": "1b544cdc46f137a63b96.png",
+    "category": "server",
+    "model": "XR7620",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image33.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "d7310f74f51f0ac29a8f",
+    "name": "XR12 FA OEM Bezel Front",
+    "aliases": [
+      "XR12 FA OEM Bezel Front"
+    ],
+    "file": "d7310f74f51f0ac29a8f.png",
+    "category": "server",
+    "model": "XR12",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image37.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "b0afec0bdd01adc79b26",
+    "name": "XR12 FA Rear",
+    "aliases": [
+      "XR12 FA Rear"
+    ],
+    "file": "b0afec0bdd01adc79b26.png",
+    "category": "server",
+    "model": "XR12",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image38.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "187fc27adad256ffe080",
+    "name": "XR7620 RA 4D 2.5 Rear",
+    "aliases": [
+      "XR7620 RA 4D 2.5 Rear"
+    ],
+    "file": "187fc27adad256ffe080.png",
+    "category": "server",
+    "model": "XR7620",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image39.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "88d9c826caae76e9dcbb",
+    "name": "XR12 RA OEM Bezel Front",
+    "aliases": [
+      "XR12 RA OEM Bezel Front"
+    ],
+    "file": "88d9c826caae76e9dcbb.png",
+    "category": "server",
+    "model": "XR12",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image40.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "338b6e135dfaf3126c44",
+    "name": "XR12 RA Bezel Front",
+    "aliases": [
+      "XR12 RA Bezel Front"
+    ],
+    "file": "338b6e135dfaf3126c44.png",
+    "category": "server",
+    "model": "XR12",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image41.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "4fa7706552f2bc9e8a86",
+    "name": "XR12 RA Rear",
+    "aliases": [
+      "XR12 RA Rear"
+    ],
+    "file": "4fa7706552f2bc9e8a86.png",
+    "category": "server",
+    "model": "XR12",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image42.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "fab4710e018631fc8385",
+    "name": "XR12 RA Rear",
+    "aliases": [
+      "XR12 RA Rear"
+    ],
+    "file": "fab4710e018631fc8385.png",
+    "category": "server",
+    "model": "XR12",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image43.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "56565548eb3757ed57cc",
+    "name": "XR7620 RA Front",
+    "aliases": [
+      "XR7620 RA Front"
+    ],
+    "file": "56565548eb3757ed57cc.png",
+    "category": "server",
+    "model": "XR7620",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image44.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "84277652172b8f26575f",
+    "name": "XR7620 RA 8D E3.S Rear",
+    "aliases": [
+      "XR7620 RA 8D E3.S Rear"
+    ],
+    "file": "84277652172b8f26575f.png",
+    "category": "server",
+    "model": "XR7620",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image32.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "2568b477c2cec8c108fa",
+    "name": "XR12 Drive Military Bracket",
+    "aliases": [
+      "XR12 Drive Military Bracket"
+    ],
+    "file": "2568b477c2cec8c108fa.png",
+    "category": "disk",
+    "model": "XR12",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image45.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "d333fe44e021e9ae4935",
+    "name": "XR7620 FA Rear",
+    "aliases": [
+      "XR7620 FA Rear"
+    ],
+    "file": "d333fe44e021e9ae4935.png",
+    "category": "server",
+    "model": "XR7620",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image46.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "f941cb952fb4fe30aa6f",
+    "name": "XR4000r Front",
+    "aliases": [
+      "XR4000r Front"
+    ],
+    "file": "f941cb952fb4fe30aa6f.png",
+    "category": "server",
+    "model": "XR4000R",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image47.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "2161293f186d6c1a8221",
+    "name": "XR7620 FA 8D E3.S Front",
+    "aliases": [
+      "XR7620 FA 8D E3.S Front"
+    ],
+    "file": "2161293f186d6c1a8221.png",
+    "category": "server",
+    "model": "XR7620",
+    "view": "front",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image48.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "766370770bc608ecea3a",
+    "name": "XR4000r Security Bracket",
+    "aliases": [
+      "XR4000r Security Bracket"
+    ],
+    "file": "766370770bc608ecea3a.png",
+    "category": "other",
+    "model": "XR4000R",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image49.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "d9d95ac4dbad06a44e37",
+    "name": "XR4000r Rear (FP)",
+    "aliases": [
+      "XR4000r Rear (FP)"
+    ],
+    "file": "d9d95ac4dbad06a44e37.png",
+    "category": "server",
+    "model": "XR4000R",
+    "view": "rear",
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image50.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  },
+  {
+    "id": "3d68a3ca6e31f6281f50",
+    "name": "XR4000r Security Bezel",
+    "aliases": [
+      "XR4000r Security Bezel",
+      "XR7620 Bezel Front"
+    ],
+    "file": "3d68a3ca6e31f6281f50.png",
+    "category": "other",
+    "model": "XR4000R",
+    "view": null,
+    "mount": null,
+    "source": "Dell-PowerEdge-XR.vssx",
+    "source_sha256": "2447845bee29435447f6e3ef610f6820b18a7b0e8b8087ef633fef1a6a8ec9b2",
+    "embedded_path": "visio/media/image51.emf",
+    "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."
+  }
+]
