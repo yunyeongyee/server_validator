@@ -12,4 +12,3 @@ playwright-report/
 dist/
 build/
 *.spec
-web/

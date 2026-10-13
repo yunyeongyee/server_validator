@@ -6,12 +6,12 @@
 
 ## 내 PC에서 실행
 
-1. GitHub의 [실행용 ZIP](https://github.com/yunyeongyee/server_validator/raw/refs/heads/main/dist/ServerValidator-Mockup.zip)을 받아 압축 해제합니다.
+1. GitHub의 **Code → Download ZIP** 또는 [실행용 ZIP](https://github.com/yunyeongyee/server_validator/raw/refs/heads/main/dist/ServerValidator-Mockup.zip)을 받아 압축 해제합니다.
 2. Python 3.10 이상을 설치합니다.
 3. **run.bat를 더블클릭**합니다. 처음 실행할 때 Python 의존성을 설치하고 브라우저를 엽니다.
 4. 실행 창을 유지하고 **예제 불러오기 → 두 문서 예비 분석**으로 시작합니다. 종료는 실행 창에서 Ctrl+C입니다.
 
-ZIP에는 빌드된 React 화면이 포함되어 **Node.js·도메인·호스팅 없이** 실행합니다. 첫 의존성 설치에는 인터넷이 필요합니다. `start.cmd`는 `run.bat`로 연결하는 호환 진입점입니다. Windows 실행 자체는 이 Linux 환경에서 검증하지 않았습니다.
+GitHub 소스 ZIP과 실행용 ZIP 모두 `web/`의 빌드된 React 화면을 포함하여 **Node.js·도메인·호스팅 없이** 실행합니다. 첫 의존성 설치에는 인터넷이 필요합니다. `start.cmd`는 `run.bat`로 연결하는 호환 진입점입니다. Windows 실행 자체는 이 Linux 환경에서 검증하지 않았습니다.
 
 큰 스텐실은 **이미지 보관함 → 스텐실 가져오기**에서 원본 VSSX/VSDX를 선택합니다(128MB 이하). EMF/WMF 변환에는 Inkscape가 PATH에 있어야 합니다. 또는 Visio에서 실제 PNG로 내보내 **이미지 추가**로 가져옵니다(20MB 이하). 채팅 파일 전송의 32MB 한도와 별개입니다.
 
@@ -30,7 +30,7 @@ cd ..
 python launcher.py --no-browser
 ```
 
-화면 수정 중에는 별도 터미널의 `frontend`에서 `npm run dev`를 사용합니다. Vite는 `/api`, 실제 이미지 경로를 FastAPI로 연결합니다. 배포 화면은 `npm run build` 후 `web/`에 생성됩니다. 개발에는 Vite가 지원하는 Node.js 버전(현재 검증: Node 24)이 필요합니다.
+화면 수정 중에는 별도 터미널의 `frontend`에서 `npm run dev`를 사용합니다. Vite는 `/api`, 실제 이미지 경로를 FastAPI로 연결합니다. 배포 화면은 `npm run build` 후 `web/`에 생성됩니다. 사용자 실행을 위해 이 빌드 결과를 Git에 함께 저장합니다. 화면을 수정하면 빌드 결과도 같은 커밋에 포함하세요. 개발에는 Vite가 지원하는 Node.js 버전(현재 검증: Node 24)이 필요합니다.
 
 ## OpenAI는 선택 사항
 
@@ -61,6 +61,6 @@ python scripts/verify_mockup.py
 python scripts/package_mockup.py
 ```
 
-단위/API 테스트는 19개입니다. 브라우저 검증은 별도 8002 포트, Playwright 및 Chromium을 사용해 문서·수정·재판정·실제 이미지·Pillow PNG·업로드·복원을 확인합니다. ZIP은 `dist/ServerValidator-Mockup.zip`에 생성되며 Node 의존성, 사용자 업로드, 키와 PC 보정을 포함하지 않습니다.
+단위/API 테스트는 20개입니다. 브라우저 검증은 별도 8002 포트, Playwright 및 Chromium을 사용해 문서·수정·재판정·실제 이미지·Pillow PNG·업로드·복원을 확인합니다. ZIP은 `dist/ServerValidator-Mockup.zip`에 생성되며 Node 의존성, 사용자 업로드, 키와 PC 보정을 포함하지 않습니다.
 
 이번 배포는 사용자 승인에 따라 `main`에 올립니다. **이후 작업은 새 브랜치에서 시작 → 검증 → 릴리스 시 main 반영**으로 진행합니다. main을 직접 수정하거나 강제 푸시하지 않습니다.

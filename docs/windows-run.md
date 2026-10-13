@@ -2,7 +2,7 @@
 
 ## 실행
 
-1. GitHub main의 `dist/ServerValidator-Mockup.zip`을 다운로드하고 폴더에 압축 해제합니다.
+1. GitHub main의 **Code → Download ZIP** 또는 `dist/ServerValidator-Mockup.zip`을 다운로드하고 폴더에 압축 해제합니다. 두 방식 모두 `web/` 화면이 포함됩니다.
 2. 공식 Python 3.10 이상을 설치합니다.
 3. **run.bat를 더블클릭**합니다. 처음 실행 시 가상환경과 FastAPI/Pillow 의존성을 설치합니다.
 4. 브라우저가 자동으로 열립니다. 실행 창은 유지합니다.
