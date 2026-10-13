@@ -4,11 +4,12 @@ import json
 import os
 import tempfile
 import uuid
+import secrets
 from pathlib import Path
 from urllib.parse import urlparse
 
 import uvicorn
-from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi import FastAPI, HTTPException, Request, Response, BackgroundTasks
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator
@@ -18,6 +19,7 @@ from .analysis import ROOT, compare, compatibility
 from .ai import ai_status, extract_document, research
 from .stencils import extract_stencil, MAX_ARCHIVE
 from .images import export_png, validate_raster
+from .releases import release_info
 
 STATIC = ROOT / "static"
 WEB = ROOT / "web"
@@ -71,7 +73,19 @@ class CompareRequest(BaseModel):
 
 @app.get("/api/health")
 def health():
-    return {"app": "server-validator", "status": "ok", "mode": "mockup", "stack": "FastAPI + React/TypeScript + Pillow", **ai_status()}
+    return {"app": "server-validator", "status": "ok", "mode": "mockup", "release_id": release_info(ROOT).get('release_id', 'development'), "stack": "FastAPI + React/TypeScript + Pillow", **ai_status()}
+
+
+@app.post('/api/shutdown')
+def shutdown(request: Request, background: BackgroundTasks):
+    token = getattr(app.state, 'control_token', None)
+    callback = getattr(app.state, 'shutdown_callback', None)
+    supplied = request.headers.get('X-SV-Control', '')
+    if not request.client or request.client.host not in {'127.0.0.1', '::1'} or not token or not secrets.compare_digest(token, supplied):
+        raise HTTPException(403, '로컬 서버 제어 권한이 없습니다.')
+    if not callback: raise HTTPException(409, '실행 창을 종료한 후 다시 실행하세요.')
+    background.add_task(callback)
+    return {'status': 'stopping'}
 
 
 @app.get("/api/catalog")

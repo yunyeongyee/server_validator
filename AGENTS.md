@@ -15,3 +15,9 @@ document evidence and preserve human review before final approval.
 
 Each cloud task is already isolated. Use the existing checkout and do not create
 a Git worktree unless the user explicitly requests one.
+
+For releases, regenerate and commit release-info.json and the distribution ZIP
+with scripts/package_mockup.py. Then generate dist/update.json using
+scripts/update_manifest.py <payload-commit> and commit the index separately.
+Publish both commits together so automatic updates reference an immutable ZIP.
+Never include local runtime control tokens or update backups in the release.

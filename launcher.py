@@ -3,6 +3,7 @@ import argparse
 import json
 import os
 import socket
+import secrets
 import sys
 import urllib.request
 import webbrowser
@@ -19,14 +20,22 @@ def main():
         os.environ.setdefault('SERVER_VALIDATOR_DATA_DIR',str(local_data))
     import uvicorn
     from app.server import app
+    from app.releases import release_info
+    from app.runtime import write_runtime, clear_runtime
+    root = Path(__file__).resolve().parent
     address=f'http://127.0.0.1:{args.port}'
     try:
         listener=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        if os.name != 'nt':
+            listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         listener.bind(('127.0.0.1',args.port))
     except OSError:
         try:
             with urllib.request.urlopen(address+'/api/health',timeout=2) as response: health=json.load(response)
             if health.get('app')=='server-validator':
+                if health.get('release_id') != release_info(root).get('release_id', 'development'):
+                    print('An older version is still running. Close its command window and run again.',file=sys.stderr)
+                    raise SystemExit(1)
                 if not args.no_browser: webbrowser.open(address)
                 print('Server Validator is already running. Reusing the existing local instance.')
                 return
@@ -41,9 +50,15 @@ def main():
         import threading
         threading.Timer(1.0,lambda:webbrowser.open(address)).start()
     server=uvicorn.Server(uvicorn.Config(app,host='127.0.0.1',port=args.port,access_log=False))
+    token = secrets.token_urlsafe(32)
+    app.state.control_token = token
+    app.state.shutdown_callback = lambda: setattr(server, 'should_exit', True)
+    write_runtime(root, listener.getsockname()[1], token)
     try: server.run(sockets=[listener])
     except KeyboardInterrupt: pass
-    finally: listener.close()
+    finally:
+        listener.close()
+        clear_runtime(root)
 
 
 if __name__=='__main__': main()

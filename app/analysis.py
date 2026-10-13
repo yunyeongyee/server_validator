@@ -291,7 +291,7 @@ def compatibility(quote, placement=None):
     rows = []
     def add(title, status, reason): rows.append({"title": title, "status": status, "expected": "공식 구성 지원 확인", "actual": "", "reason": reason, "evidence": []})
     if not models or not models[0]["model"]: add("견적 서버 모델", "unknown", "견적 원문에 서버 모델이 없습니다. 요구 모델을 대신 사용하여 호환성을 확정하지 않습니다.")
-    catalog = json.loads((ROOT/"data/servers.json").read_text())
+    catalog = json.loads((ROOT/"data/servers.json").read_text(encoding="utf-8"))
     server = next((s for s in catalog["servers"] if models and any(alias.casefold() in models[0]["model"].casefold() for alias in s["aliases"])), None)
     if not server or not server["verified"]:
         add("Dell Technical Guide 검증", "unknown", "공식 가이드 원문 확인이 완료되지 않았습니다. 베이·라이저·CPU 종속 슬롯·PSU 지원을 확정할 수 없습니다.")

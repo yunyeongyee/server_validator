@@ -79,7 +79,7 @@ def extract_stencil(source, target):
         return {"id": image_id, "name": name, "aliases": masters, "file": out.name, "category": category, "model": model[0].upper() if model else None, "view": "rear" if re.search("Rear",name,re.I) else "front" if re.search("Front",name,re.I) else None, "mount": "OCP" if re.search("OCP",name,re.I) else "PCIe" if re.search("PCIe",name,re.I) else None, "source": source.name, "source_sha256": digest, "embedded_path": media, "note": "원본 스텐실의 내장 이미지입니다. 전체 마스터의 XML 도형/텍스트와 회전은 별도일 수 있습니다. 장착 지원을 보증하지 않습니다."}
     with ThreadPoolExecutor(max_workers=4) as pool: assets = [a for a in pool.map(render,jobs) if a]
     existing_file = target / "manifest.json"
-    previous = json.loads(existing_file.read_text()) if existing_file.exists() else []
+    previous = json.loads(existing_file.read_text(encoding="utf-8")) if existing_file.exists() else []
     merged = {a["id"]:a for a in previous}
     merged.update({a["id"]:a for a in assets})
     existing_file.write_text(json.dumps(list(merged.values()),ensure_ascii=False,indent=2)+"\n",encoding="utf-8",newline="\r\n")

@@ -13,6 +13,10 @@
 
 GitHub 소스 ZIP과 실행용 ZIP 모두 `web/`의 빌드된 React 화면을 포함하여 **Node.js·도메인·호스팅 없이** 실행합니다. 첫 의존성 설치에는 인터넷이 필요합니다. `start.cmd`는 `run.bat`로 연결하는 호환 진입점입니다. Windows 실행 자체는 이 Linux 환경에서 검증하지 않았습니다.
 
+**자동 업데이트:** `run.bat` 실행 시 Git 저장소는 변경 사항이 없는 `main`에서 `git pull --ff-only`를 실행합니다. ZIP으로 받은 폴더는 Git 설치 없이 최신 실행용 ZIP을 확인하고 SHA-256 검증 후 프로그램을 갱신합니다. 업데이트 후 브라우저를 열며, 사용자 이미지·보정·키는 유지합니다. 네트워크 실패 시 기존 버전으로 실행을 시도합니다. 직접 수정한 프로그램 파일이 있으면 자동 교체를 건너뜁니다.
+
+이 기능이 없는 이전 버전은 **한 번만 기존 실행 창을 Ctrl+C로 종료하고 새 ZIP 전체를 압축 해제**하세요. 이후부터는 `run.bat`만 실행하면 됩니다.
+
 큰 스텐실은 **이미지 보관함 → 스텐실 가져오기**에서 원본 VSSX/VSDX를 선택합니다(128MB 이하). EMF/WMF 변환에는 Inkscape가 PATH에 있어야 합니다. 또는 Visio에서 실제 PNG로 내보내 **이미지 추가**로 가져옵니다(20MB 이하). 채팅 파일 전송의 32MB 한도와 별개입니다.
 
 - [버튼별 사용자 흐름](docs/user-flow.md)
@@ -61,6 +65,8 @@ python scripts/verify_mockup.py
 python scripts/package_mockup.py
 ```
 
-단위/API 테스트는 20개입니다. 브라우저 검증은 별도 8002 포트, Playwright 및 Chromium을 사용해 문서·수정·재판정·실제 이미지·Pillow PNG·업로드·복원을 확인합니다. ZIP은 `dist/ServerValidator-Mockup.zip`에 생성되며 Node 의존성, 사용자 업로드, 키와 PC 보정을 포함하지 않습니다.
+단위/API 테스트는 30개입니다. 브라우저 검증은 별도 8002 포트, Playwright 및 Chromium을 사용해 문서·수정·재판정·실제 이미지·Pillow PNG·업로드·복원을 확인합니다. ZIP은 `dist/ServerValidator-Mockup.zip`에 생성되며 Node 의존성, 사용자 업로드, 키와 PC 보정을 포함하지 않습니다.
+
+자동 업데이트 배포는 `scripts/package_mockup.py`로 ZIP과 `release-info.json`을 생성한 뒤 커밋합니다. 이어 `python scripts/update_manifest.py <ZIP 커밋 SHA>`로 `dist/update.json`을 만들고 별도 커밋합니다. 두 커밋을 함께 main에 반영하여 업데이트 주소가 실제 커밋된 ZIP을 가리키게 합니다. ZIP과 업데이트 색인은 dist가 무시되므로 명시적으로 `git add -f`합니다.
 
 이번 배포는 사용자 승인에 따라 `main`에 올립니다. **이후 작업은 새 브랜치에서 시작 → 검증 → 릴리스 시 main 반영**으로 진행합니다. main을 직접 수정하거나 강제 푸시하지 않습니다.

@@ -84,7 +84,7 @@ def main():
                 png=Path(temp)/'composition.png';download.value.save_as(png);assert png.read_bytes().startswith(b'\x89PNG') and png.stat().st_size>10000
                 with page.expect_download() as download:page.click('#calibration-export')
                 calibration=Path(temp)/'server.calibration.json';download.value.save_as(calibration)
-                values=json.loads(calibration.read_text());assert values['composition']['practice'] is True
+                values=json.loads(calibration.read_text(encoding='utf-8'));assert values['composition']['practice'] is True
                 page.set_input_files('#calibration-upload',str(calibration));page.click('#confirm-action');assert page.locator('#confirm-coordinates').inner_text()=='좌표 확정'
                 values['composition']['boxes']['front'][0]['x']=99999
                 invalid=Path(temp)/'invalid.calibration.json';invalid.write_text(json.dumps(values));page.set_input_files('#calibration-upload',str(invalid));page.wait_for_timeout(200);assert not page.locator('#modal').count()
