@@ -52,6 +52,7 @@ export interface Extraction {
   warnings: string[];
 }
 export interface Row {
+  category?: Category | null;
   title: string;
   status: Status;
   expected: string;
@@ -101,6 +102,8 @@ export interface Box {
   ly?: number;
   bold?: boolean;
   connector?: boolean;
+  lineStyle?: "solid" | "dashed";
+  lineWidth?: number;
 }
 export interface Composition {
   model: "R760" | "R660";

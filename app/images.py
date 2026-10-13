@@ -1,5 +1,6 @@
 """Pillow composition of actual artwork; no server illustration is generated."""
 import io
+import math
 import os
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageOps
@@ -50,7 +51,22 @@ def export_png(payload, assets, static, user_assets):
         lx = float(b.get("lx", x+w/2))*2
         ly = float(b.get("ly", max(15,y-18)))*2
         if not (0 <= lx <= 2000 and 0 <= ly <= 800): raise ValueError("라벨 좌표를 확인하세요.")
-        if b.get("connector", True): draw.line((int((x+w/2)*2),int(y*2),int(lx),int(ly)),fill="#6a86ad",width=2)
+        line_width = b.get("lineWidth", 1)
+        line_style = b.get("lineStyle", "solid")
+        if isinstance(line_width, bool) or line_width not in (1, 2, 3, 4) or line_style not in ("solid", "dashed"):
+            raise ValueError("연결선 굵기 또는 종류가 올바르지 않습니다.")
+        if b.get("connector", True):
+            start = ((x+w/2)*2, y*2)
+            end = (lx, ly)
+            width = int(line_width * 2)
+            if line_style == "solid":
+                draw.line((*start, *end), fill="#6a86ad", width=width)
+            else:
+                distance = math.dist(start, end)
+                for offset in range(0, math.ceil(distance), 20):
+                    a, z = offset / distance, min(offset + 12, distance) / distance
+                    draw.line((start[0]+(end[0]-start[0])*a, start[1]+(end[1]-start[1])*a,
+                               start[0]+(end[0]-start[0])*z, start[1]+(end[1]-start[1])*z), fill="#6a86ad", width=width)
         text = str(b.get("label", b.get("name", "")))[:100]
         bounds = draw.textbbox((0,0),text,font=font)
         tw = bounds[2] - bounds[0]

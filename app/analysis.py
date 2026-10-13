@@ -200,9 +200,10 @@ def compare(requirement, quote, policy=None):
     policy = policy or {}
     req, quo = requirement["items"], quote["items"]
     rows = []
+    active_category = None
     def group(items, cat): return [i for i in items if i["category"] == cat]
     def add(title, status, expected, actual, reason, evidence=None):
-        rows.append({"title": title, "status": status, "expected": str(expected), "actual": str(actual), "reason": reason, "evidence": evidence or []})
+        rows.append({"category": active_category, "title": title, "status": status, "expected": str(expected), "actual": str(actual), "reason": reason, "evidence": evidence or []})
     def minimum(title, expected, actual, evidence, reason="원문 명시값을 비교했습니다."):
         if expected is None: return
         add(title, "unknown" if actual is None else "pass" if actual >= expected else "fail", expected, "미명시" if actual is None else actual, "필수 값이 누락되어 확인이 필요합니다." if actual is None else reason, evidence)
@@ -210,6 +211,7 @@ def compare(requirement, quote, policy=None):
         if not items or any(i.get(field) is None or i.get("quantity") is None for i in items): return None
         return sum(i[field]*i["quantity"] for i in items)
     for cat in CATEGORIES:
+        active_category = cat
         rs, qs = group(req, cat), group(quo, cat)
         if not rs: continue
         evidence = [i["evidence"] for i in rs+qs]
@@ -277,9 +279,12 @@ def compare(requirement, quote, policy=None):
         else:
             add(LABELS[cat]+" 확인", "unknown", rs[0]["evidence"], qs[0]["evidence"] if qs else "미명시", "자동 비교 규칙으로 확정할 수 없습니다. 원문과 데이터시트 검토가 필요합니다.", evidence)
     for extraction in [requirement,quote]:
+        active_category = None
         if extraction.get("unparsed"): add("미추출 원문 ("+("요구사항" if extraction is requirement else "견적")+")", "unknown", "모든 원문 항목 추출", f'{len(extraction["unparsed"])}개 미추출', "아래 원문은 사람이 확인하기 전까지 최종 판정을 보류합니다.", extraction["unparsed"])
         for it in extraction["items"]:
+            active_category = it["category"]
             if it.get("confidence") == "ambiguous": add(LABELS[it["category"]]+" 추출 검토", "unknown", "명확한 추출 근거", "해석 불명확", " · ".join(it.get("issues",[])), [it["evidence"]])
+    active_category = None
     if not req: add("요구사항 추출", "unknown", "비교 가능한 요구사항", "0개", "추출 가능한 요구사항이 없습니다.")
     return {"rows": rows, "counts": dict(Counter(r["status"] for r in rows)), "status": "fail" if any(r["status"]=="fail" for r in rows) else "unknown" if any(r["status"]=="unknown" for r in rows) else "pass"}
 

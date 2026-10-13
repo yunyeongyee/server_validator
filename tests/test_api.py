@@ -61,6 +61,30 @@ class ApiTests(unittest.TestCase):
         response=self.client.post('/api/export/png',json={'image_id':asset['id'],'boxes':[{'x':999,'y':0,'w':100,'h':20}]})
         self.assertEqual(response.status_code,400)
 
+    def test_connector_style_is_preserved_in_png(self):
+        asset=self.client.get('/api/catalog').json()['assets'][0]
+        box={'x':200,'y':80,'w':20,'h':20,'lx':210,'ly':10,'label':'A','lineWidth':3}
+        pixels=[]
+        for style in ('solid','dashed'):
+            response=self.client.post('/api/export/png',json={'image_id':asset['id'],'boxes':[{**box,'lineStyle':style}]})
+            self.assertEqual(response.status_code,200)
+            with Image.open(io.BytesIO(response.content)) as image:
+                pixels.append(image.getpixel((420,143)))
+                self.assertEqual(image.getpixel((422,155)),(106,134,173))
+        self.assertEqual(pixels[0],(106,134,173))
+        self.assertNotEqual(pixels[0],pixels[1])
+        response=self.client.post('/api/export/png',json={'image_id':asset['id'],'boxes':[{**box,'lineWidth':100}]})
+        self.assertEqual(response.status_code,400)
+
+    def test_comparison_rows_identify_the_category_without_guessing_titles(self):
+        response=self.client.post('/api/analyze',json={'requirement':'CPU : 2.8GHz 16코어 이상\nSSD : 960GB SATA * 2EA(RAID1)', 'quote':'CPU : 2.9GHz 8C * 2EA\nSSD : 960GB SATA * 2EA', 'engine':'rules'})
+        self.assertEqual(response.status_code,200)
+        rows=response.json()['comparison']['rows']
+        self.assertTrue(any(r['category']=='cpu' for r in rows))
+        raid=next(r for r in rows if r['title']=='SSD RAID')
+        self.assertEqual(raid['category'],'ssd')
+        self.assertEqual(raid['status'],'unknown')
+
     def test_raster_upload_and_invalid_raster(self):
         with tempfile.TemporaryDirectory() as temp, patch('app.server.USER_ASSETS',Path(temp)):
             png=io.BytesIO();Image.new('RGB',(10,10),'blue').save(png,format='PNG')

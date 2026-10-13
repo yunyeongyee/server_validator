@@ -173,6 +173,10 @@ export default function App() {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [dialog, setDialog] = useState<Dialog | null>(null);
+  const [editorOpen, setEditorOpen] = useState(false);
+  const [documentsOpen, setDocumentsOpen] = useState(!draft.data);
+  const [editorMode, setEditorMode] = useState<"configuration" | "labels" | "coordinates">("configuration");
+  const [zoom, setZoom] = useState(100);
   const [library, setLibrary] = useState<LibraryContext | null>(null);
   const [selected, setSelected] = useState<string[]>([]);
   const [tab, setTab] = useState("requirements");
@@ -232,13 +236,11 @@ export default function App() {
     }
   };
   const go = (step: number) => {
-    if (step > 0 && !draft.data) {
-      notify("먼저 두 문서를 분석하세요.");
-      return;
-    }
     update((n) => (n.step = step));
-    setSelected([]);
-    window.scrollTo({ top: 0 });
+    if (step === 3) { setEditorOpen(true); return; }
+    setEditorOpen(false);
+    if (step === 0) setDocumentsOpen(true);
+    document.getElementById(["documents-panel", "specifications-panel", "verdict-panel"][step])?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
   const c = draft.composition,
     boxes = c.boxes[c.view],
@@ -282,6 +284,11 @@ export default function App() {
     const timer = setTimeout(() => setMessage(""), 3200);
     return () => clearTimeout(timer);
   }, [message]);
+  useEffect(() => {
+    if (draft.data?.comparison.rows.some((row) => row.category === undefined)) {
+      void calculate(deep(draft));
+    }
+  }, []);
   const moveBoxes = (ids: string[], dx: number, dy: number, label: boolean) =>
     update((n) => {
       for (const b of n.composition.boxes[n.composition.view].filter((b) =>
@@ -301,7 +308,7 @@ export default function App() {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (
-        draft.step !== 3 ||
+        !editorOpen || editorMode === "configuration" ||
         dialog ||
         library ||
         !selected.length ||
@@ -317,12 +324,12 @@ export default function App() {
       };
       if (delta[e.key]) {
         e.preventDefault();
-        moveBoxes(selected, ...delta[e.key], false);
+        moveBoxes(selected, ...delta[e.key], editorMode === "labels");
       }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [draft.step, dialog, library, selected]);
+  }, [editorOpen, editorMode, dialog, library, selected]);
   async function calculate(next: Draft) {
     if (!next.data) return;
     const version = ++compareVersion.current;
@@ -347,7 +354,7 @@ export default function App() {
         },
       );
       if (version === compareVersion.current)
-        setDraft({ ...next, data: { ...next.data, ...result } });
+        setDraft((current) => current.data ? { ...current, data: { ...current.data, ...result } } : current);
     } catch (e) {
       notify(String(e));
     }
@@ -358,6 +365,7 @@ export default function App() {
       return;
     }
     setBusy(true);
+    const version = ++compareVersion.current;
     try {
       const result = await api<Analysis>("/api/analyze", {
         requirement: draft.requirement,
@@ -365,17 +373,17 @@ export default function App() {
         policy: draft.policy,
         engine,
       });
-      const next = deep(draft);
-      next.data = result;
-      next.step = 1;
-      invalidate(next);
-      addLog(
-        next,
-        "두 문서 분석",
-        result.requirement.method + " / " + result.quote.method,
-      );
-      setDraft(next);
-      window.scrollTo(0, 0);
+      if (version !== compareVersion.current) return;
+      setDraft((current) => {
+        const next = deep(current);
+        next.data = result;
+        next.step = 1;
+        invalidate(next);
+        addLog(next, "두 문서 분석", result.requirement.method + " / " + result.quote.method);
+        return next;
+      });
+      setDocumentsOpen(false);
+      document.getElementById("specifications-panel")?.scrollTo(0, 0);
     } catch (e) {
       notify(String(e));
     } finally {
@@ -997,7 +1005,9 @@ export default function App() {
             b.w <= 0 ||
             b.h <= 0 ||
             b.x + b.w > 1000 ||
-            b.y + b.h > 400
+            b.y + b.h > 400 ||
+            (b.lineWidth != null && ![1, 2, 3, 4].includes(b.lineWidth)) ||
+            (b.lineStyle != null && !["solid", "dashed"].includes(b.lineStyle))
           )
             throw Error();
         if (nextC.images[v] && !assets.some((a) => a.id === nextC.images[v])) {
@@ -1137,7 +1147,11 @@ export default function App() {
                 id={key + "-input"}
                 maxLength={60000}
                 value={draft[key]}
-                onChange={(e) => update((n) => (n[key] = e.target.value))}
+                disabled={busy}
+                onChange={(e) => {
+                  compareVersion.current++;
+                  update((n) => { n[key] = e.target.value; n.data = null; invalidate(n); });
+                }}
                 placeholder={
                   i
                     ? "예) CPU : 인텔 제온 골드 5415+ 2.9G, 8C/16T * 2EA\nMEM : 32GB RDIMM * 4EA"
@@ -1312,7 +1326,7 @@ export default function App() {
               <th>구분</th>
               <th>고객 요구사항</th>
               <th>견적사항</th>
-              <th>상태</th>
+              <th>예비 판정</th>
             </tr>
           </thead>
           <tbody>
@@ -1382,22 +1396,14 @@ export default function App() {
                     </td>
                   ))}
                   <td>
-                    <Pill
-                      status={
-                        reviewItems
-                          .filter((i) => i.category === cat)
-                          .every((i) => i.reviewed)
-                          ? "pass"
-                          : "unknown"
-                      }
-                      label={
-                        reviewItems
-                          .filter((i) => i.category === cat)
-                          .every((i) => i.reviewed)
-                          ? "검토 완료"
-                          : "검토 필요"
-                      }
-                    />
+                    {(() => {
+                      const rows = draft.data!.comparison.rows.filter((r) => r.category === cat);
+                      const status = rows.some((r) => r.status === "fail") ? "fail" : !rows.length || rows.some((r) => r.status === "unknown") ? "unknown" : "pass";
+                      return <><Pill status={status} label={!rows.length ? "판정 없음" : undefined} />
+                        {rows.length > 0 && <button className="button small row-verdict" onClick={() => show(categories[cat] + " 판정 근거", <div className="modal-body">{rows.map((row, index) => <div className="evidence" key={index}><strong>{row.title} · {row.status === "pass" ? "예비 충족" : row.status === "fail" ? "미충족" : "확인 필요"}</strong><p>요구: {row.expected}</p><p>견적: {row.actual}</p><p>{row.reason}</p></div>)}</div>)}>근거</button>}
+                      </>;
+                    })()}
+
                   </td>
                 </tr>
               ))}
@@ -1434,18 +1440,10 @@ export default function App() {
         <Button
           primary
           id="go-results"
-          onClick={() => {
-            if (reviewed < reviewItems.length)
-              confirm(
-                "미검토 항목을 포함해 예비 판정을 볼까요?",
-                `${reviewItems.length - reviewed}개 미검토 항목이 있습니다. 최종 승인으로 표시하지 않습니다.`,
-                () => go(2),
-                "예비 판정 보기",
-              );
-            else go(2);
-          }}
+          onClick={() => go(2)}
         >
-          예비 판정 확인 →
+          판정 상세 보기
+
         </Button>
       </Footer>
     </>
@@ -1624,7 +1622,7 @@ export default function App() {
                   <h3>{row.title}</h3>
                   <Pill
                     status={row.status}
-                    label={tab === "compatibility" ? "검증 대기" : undefined}
+                    label={tab === "compatibility" && row.status === "unknown" ? "검증 대기" : undefined}
                   />
                 </div>
                 <div className="compare-values">
@@ -1675,7 +1673,7 @@ export default function App() {
     </>
   );
 
-  const compositionPage = draft.data && (
+  const compositionPage = (
     <>
       <Heading
         step={3}
@@ -1766,62 +1764,6 @@ export default function App() {
                   보정 도움말
                 </Button>
               </div>
-            </div>
-            <div className="canvas-wrap" id="canvas-wrap">
-              {image ? (
-                <Canvas
-                  asset={image}
-                  assets={assets}
-                  composition={c}
-                  selected={selected}
-                  onSelect={(id, multi) =>
-                    setSelected((prev) =>
-                      !id
-                        ? []
-                        : multi
-                          ? prev.includes(id)
-                            ? prev.filter((v) => v !== id)
-                            : [...prev, id]
-                          : prev.includes(id)
-                            ? prev
-                            : [id],
-                    )
-                  }
-                  onMove={moveBoxes}
-                />
-              ) : (
-                <div className="empty-state" style={{ minHeight: 350 }}>
-                  <span className="empty-symbol">▧</span>
-                  <h3>
-                    {c.model} {c.view === "front" ? "전면" : "후면"} 스텐실을
-                    선택하세요.
-                  </h3>
-                  <p>
-                    RackServers 원본에서 해당 모델의 실제 이미지를 가져옵니다.
-                    XR 그림을 R760/R660 대신 사용하지 않습니다.
-                  </p>
-                  <div className="buttons">
-                    <Button
-                      primary
-                      id="empty-import"
-                      onClick={() => stencilRef.current?.click()}
-                    >
-                      스텐실 가져오기
-                    </Button>
-                    <Button id="practice-start" onClick={practice}>
-                      XR 이미지로 편집 연습
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </div>
-            <div className="canvas-meta">
-              <span>
-                {image
-                  ? image.name + " · " + image.source
-                  : "실제 이미지 선택 전"}
-              </span>
-              <span>좌표 기준 1000 × 400 · {boxes.length}개 영역</span>
             </div>
             <div className="canvas-control">
               <Button
@@ -1940,19 +1882,99 @@ export default function App() {
                 선택 삭제
               </Button>
             </div>
+            <div className="drawing-toolbar" role="toolbar" aria-label="라벨과 연결선 도구">
+              <Button small disabled={!selected.length} onClick={() => document.getElementById("label-text")?.focus()}>T 라벨 편집</Button>
+              <label>연결선
+                <select id="line-style" disabled={!selected.length} value={selectedBox?.connector === false ? "none" : selectedBox?.lineStyle || "solid"}
+                  onChange={(e) => update((n) => n.composition.boxes[c.view].filter((b) => selected.includes(b.id)).forEach((b) => { b.connector = e.target.value !== "none"; b.lineStyle = e.target.value === "dashed" ? "dashed" : "solid"; }))}>
+                  <option value="solid">실선</option><option value="dashed">점선</option><option value="none">숨김</option>
+                </select>
+              </label>
+              <label>선 굵기
+                <select id="line-width" disabled={!selected.length} value={selectedBox?.lineWidth || 1}
+                  onChange={(e) => update((n) => n.composition.boxes[c.view].filter((b) => selected.includes(b.id)).forEach((b) => { b.lineWidth = Number(e.target.value); }))}>
+                  {[1, 2, 3, 4].map((v) => <option key={v} value={v}>{v} px</option>)}
+                </select>
+              </label>
+              <Button small id="align-labels" disabled={selected.length < 2} onClick={() => update((n) => {
+                const targets = n.composition.boxes[c.view].filter((b) => selected.includes(b.id));
+                const y = targets[0].ly ?? targets[0].y - 18;
+                targets.forEach((b) => { b.ly = y; });
+              })}>라벨 수평 정렬</Button>
+              <span className="muted">선택 {selected.length}개 · Shift+클릭 다중 선택</span>
+            </div>
+            <div className="canvas-wrap" id="canvas-wrap">
+              {image ? (
+                <div style={{ width: `${zoom}%`, minWidth: "100%" }}><Canvas
+                  asset={image}
+                  assets={assets}
+                  composition={c}
+                  selected={selected}
+                  editMode={editorMode}
+                  onSelect={(id, multi) =>
+                    setSelected((prev) =>
+                      !id
+                        ? []
+                        : multi
+                          ? prev.includes(id)
+                            ? prev.filter((v) => v !== id)
+                            : [...prev, id]
+                          : prev.includes(id)
+                            ? prev
+                            : [id],
+                    )
+                  }
+                  onMove={moveBoxes}
+                /></div>
+              ) : (
+                <div className="empty-state" style={{ minHeight: 350 }}>
+                  <span className="empty-symbol">▧</span>
+                  <h3>
+                    {c.model} {c.view === "front" ? "전면" : "후면"} 스텐실을
+                    선택하세요.
+                  </h3>
+                  <p>
+                    RackServers 원본에서 해당 모델의 실제 이미지를 가져옵니다.
+                    XR 그림을 R760/R660 대신 사용하지 않습니다.
+                  </p>
+                  <div className="buttons">
+                    <Button
+                      primary
+                      id="empty-import"
+                      onClick={() => stencilRef.current?.click()}
+                    >
+                      스텐실 가져오기
+                    </Button>
+                    <Button id="practice-start" onClick={practice}>
+                      XR 이미지로 편집 연습
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="canvas-meta">
+              <span>
+                {image
+                  ? image.name + " · " + image.source
+                  : "실제 이미지 선택 전"}
+              </span>
+              <span>좌표 기준 1000 × 400 · {boxes.length}개 영역</span>
+            </div>
+
           </section>
           <div className="bom-title">
             <span>견적 부품</span>
             <button
               className="button small text"
               id="auto-link"
+              disabled={!draft.data}
               onClick={autoLink}
             >
               모델 토큰으로 자동 연결
             </button>
           </div>
           <div className="card">
-            {draft.data.quote.items
+            {(draft.data?.quote.items || [])
               .map((it, index) => ({ it, index }))
               .filter(({ it }) =>
                 ["cpu", "memory", "ssd", "hdd", "nic", "hba", "psu"].includes(
@@ -2178,7 +2200,7 @@ export default function App() {
                     <div>
                       <h3>판정</h3>
                       <p>
-                        확인 필요 {draft.data!.comparison.counts.unknown || 0}개
+                        확인 필요 {draft.data?.comparison.counts.unknown || 0}개
                         · 공식 Dell 사양 검증 대기
                       </p>
                     </div>
@@ -2225,99 +2247,70 @@ export default function App() {
     </>
   );
 
+  const preview = (
+    <section id="preview-panel" className="preview-panel">
+      <div className="panel-heading"><h2>서버 이미지 구성</h2><Button small id="open-editor" onClick={() => go(3)}>크게 편집 ↗</Button></div>
+      <div className="preview-views">
+        {(["front", "rear"] as const).map((view) => {
+          const artwork = assets.find((a) => a.id === c.images[view]);
+          return <button key={view} className="image-preview" data-preview={view} aria-label={(view === "front" ? "전면" : "후면") + " 서버 이미지 편집"}
+            onClick={() => { update((n) => { n.composition.view = view; }); setSelected([]); setEditorOpen(true); }}>
+            <span>{view === "front" ? "전면" : "후면"} <small>{c.practice ? "XR 연습" : c.model + " 배치안"}</small></span>
+            {artwork ? <Canvas asset={artwork} assets={assets} composition={{ ...c, view, guides: false }} selected={[]} onSelect={() => {}} onMove={() => {}} readOnly id={"preview-" + view} />
+              : <div className="preview-empty">▧ 실제 스텐실 선택<span>클릭하여 이미지 연결·부품 배치</span></div>}
+          </button>;
+        })}
+      </div>
+      <p className="preview-note">{c.practice ? "XR 편집 연습 · 견적 서버와 별개" : "이미지 배치와 장착 호환 판정은 별개입니다."}</p>
+    </section>
+  );
+
   return (
     <>
-      <aside className="sidebar">
-        <a
-          className="brand"
-          href="#input"
-          onClick={(e) => {
-            e.preventDefault();
-            go(0);
-          }}
-        >
-          <span className="brand-mark">
-            S<span>V</span>
-          </span>
-          <span>
-            Server Validator<small>서버 사양 검증</small>
-          </span>
-        </a>
-        <div className="project-label">검토 작업</div>
-        <div className="project">
-          <span className="project-dot" />
-          <span>
-            새 서버 구성 검토
-            <small>{draft.data ? modelName : "문서 입력 대기"}</small>
-          </span>
-        </div>
-        <nav aria-label="검토 단계">
-          {steps.map((step, i) => (
-            <button
-              key={step}
-              data-step={i}
-              className={
-                draft.step === i ? "active" : draft.step > i ? "done" : ""
-              }
-              aria-current={draft.step === i ? "step" : undefined}
-              onClick={() => go(i)}
-            >
-              <span className="step-icon">{i + 1}</span>
-              <span>
-                {step}
-                <small>
-                  {
-                    [
-                      "요구사항과 견적 붙여넣기",
-                      "공통 사양과 원문 대조",
-                      "요구 충족 · 장착 호환",
-                      "실제 스텐실에 부품 배치",
-                    ][i]
-                  }
-                </small>
-              </span>
-            </button>
-          ))}
-        </nav>
-        <div className="sidebar-bottom">
-          <button
-            className="side-link"
-            id="library-open"
-            onClick={() => openLibrary()}
-          >
-            ▧ 이미지 보관함 <span>{assets.length}</span>
-          </button>
-          <button className="side-link" id="rules-open" onClick={rules}>
-            ⓘ 판정 원칙
-          </button>
-          <div className="accuracy-note">
-            <span>근거가 있어야 판정합니다.</span>
-            <p>누락·모호한 값은 확인 필요로 남깁니다.</p>
-          </div>
-          <small>FastAPI · React/TypeScript · Pillow</small>
-        </div>
-      </aside>
-      <div className="workspace">
+      <div className="workspace unified-workspace">
         <header className="topbar">
-          <span>
-            검토 작업 <b>/</b> {steps[draft.step]}
-          </span>
-          <div>
-            <span className="mock-tag">목업</span>
-            <span className="connection">
-              <i />
-              {configured ? "AI 설정됨" : "OpenAI 없이 실행"}
-            </span>
-            <Button id="save-draft" small onClick={save}>
-              임시 저장
-            </Button>
+          <a className="brand" href="#documents-panel"><span className="brand-mark">SV</span><span>Server Validator<small>서버 구성 통합 검토</small></span></a>
+          <div className="top-actions">
+            <span className="mock-tag">예비 검토</span>
+            <span className="connection">{configured ? "AI 설정됨" : "OpenAI 없이 실행"}</span>
+            <Button small id="library-open" onClick={() => openLibrary()}>이미지 보관함 {assets.length}</Button>
+            <Button small id="rules-open" onClick={rules}>판정 원칙</Button>
+            <Button small id="save-draft" onClick={save}>임시 저장</Button>
           </div>
         </header>
         <main>
-          {[inputPage, reviewPage, resultPage, compositionPage][draft.step] ||
-            inputPage}
+          <div className="workspace-heading"><div><h1>서버 구성 검토</h1><p>원문과 사양을 나란히 비교하고, 판정 근거와 실제 이미지 구성을 함께 확인하세요.</p></div>
+            <nav className="workspace-nav" aria-label="검토 영역">{steps.map((step, index) => <button key={step} data-step={index} onClick={() => go(index)}>{step}</button>)}</nav>
+          </div>
+          <section id="documents-panel" className={"work-panel documents-panel " + (documentsOpen ? "expanded" : "")} aria-label="문서 입력">
+            <div className="panel-heading"><h2><span>01</span> 요구사항 · 견적 원문</h2><Button small id="toggle-documents" onClick={() => setDocumentsOpen(!documentsOpen)}>{documentsOpen ? "원문 접기 ↑" : "원문 보기·다시 분석 ↓"}</Button></div>
+            {documentsOpen && <div className="panel-scroll">{inputPage}</div>}
+          </section>
+          <div className="review-workspace">
+            <section id="specifications-panel" className="work-panel specifications-panel" aria-label="추출값 검토">
+              <div className="panel-heading"><h2><span>02</span> 요구사항 ↔ 견적 · 공통 사양 비교</h2><small>{reviewed}/{reviewItems.length} 원문 검토</small></div>
+              <div className="panel-scroll">{reviewPage || <div className="workspace-empty"><span>≡</span><h3>두 문서를 같은 사양으로 정리합니다</h3><p>위에 요구사항과 견적을 입력한 후 분석하세요.<br/>모델·수량·성능과 원문 근거를 대조할 수 있습니다.</p></div>}</div>
+            </section>
+            <aside className="work-panel outcome-panel" aria-label="이미지 구성과 판정">
+              {preview}
+              <section id="verdict-panel" className="verdict-panel" aria-label="판정 확인">
+                <div className="panel-heading"><h2><span>03</span> 판정 상세 · 공식 자료 확인</h2><small>최종 승인 전</small></div>
+                <div className="panel-scroll">{resultPage || <div className="workspace-empty"><h3>분석 후 예비 판정이 표시됩니다</h3><p>요구사항 충족과 장착 호환성을 나누어 확인합니다. 원문을 바꾸면 다시 분석하세요.</p></div>}</div>
+              </section>
+            </aside>
+          </div>
         </main>
       </div>
+      {editorOpen && <Modal id="image-editor" className="image-editor" title="서버 이미지 상세 편집" subtitle="실제 스텐실 위에서 영역을 선택한 뒤 상단 도구로 라벨과 연결선을 편집하세요." onClose={() => { setEditorOpen(false); setSelected([]); }}>
+        <div className="editor-navigation">
+          <div className="editor-tabs" role="tablist" aria-label="이미지 편집 작업">
+            {([['configuration', '구성'], ['labels', '라벨·연결선'], ['coordinates', '좌표 보정']] as const).map(([mode, title]) => <button key={mode} role="tab" aria-selected={editorMode === mode} data-editor-mode={mode} onClick={() => setEditorMode(mode)}>{title}</button>)}
+          </div>
+          <div className="zoom-tools"><button aria-label="축소" disabled={zoom <= 100} onClick={() => setZoom(Math.max(100, zoom - 25))}>−</button><button aria-label="이미지 맞춤" onClick={() => setZoom(100)}>{zoom}%</button><button aria-label="확대" disabled={zoom >= 200} onClick={() => setZoom(Math.min(200, zoom + 25))}>＋</button></div>
+        </div>
+        <div className={"editor-body mode-" + editorMode}>{compositionPage}</div>
+        <div className="modal-footer"><p>변경 사항은 비교 화면과 이 브라우저의 임시 저장에 바로 반영됩니다.</p><Button primary id="editor-done" onClick={() => { setEditorOpen(false); setSelected([]); }}>편집 완료</Button></div>
+      </Modal>}
       {dialog && (
         <Modal title={dialog.title} subtitle={dialog.subtitle} onClose={close}>
           {dialog.body}

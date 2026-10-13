@@ -1,5 +1,6 @@
 import {
   useEffect,
+  useId,
   useRef,
   useState,
   type ReactNode,
@@ -19,11 +20,15 @@ import {
 } from "./types";
 
 export function Modal({
+  id = "modal",
+  className,
   title,
   subtitle,
   children,
   onClose,
 }: {
+  id?: string;
+  className?: string;
   title: string;
   subtitle?: string;
   children: ReactNode;
@@ -35,7 +40,9 @@ export function Modal({
   }, []);
   return (
     <dialog
-      id="modal"
+      id={id}
+      className={className}
+      aria-labelledby={id + "-title"}
       ref={ref}
       onCancel={(e) => {
         e.preventDefault();
@@ -44,7 +51,7 @@ export function Modal({
     >
       <div className="modal-header">
         <div>
-          <h2>{title}</h2>
+          <h2 id={id + "-title"}>{title}</h2>
           <p>{subtitle}</p>
         </div>
         <button className="modal-close" onClick={onClose} aria-label="닫기">
@@ -566,6 +573,9 @@ export function ImageForm({
   );
 }
 export function Canvas({
+  readOnly = false,
+  editMode = "coordinates",
+  id = "server-canvas",
   asset,
   assets,
   composition,
@@ -573,6 +583,9 @@ export function Canvas({
   onSelect,
   onMove,
 }: {
+  readOnly?: boolean;
+  editMode?: "configuration" | "labels" | "coordinates";
+  id?: string;
   asset: Asset;
   assets: Asset[];
   composition: Composition;
@@ -580,6 +593,7 @@ export function Canvas({
   onSelect: (id: string | null, multi?: boolean) => void;
   onMove: (ids: string[], dx: number, dy: number, label: boolean) => void;
 }) {
+  const gridId = useId();
   const ref = useRef<SVGSVGElement>(null);
   const drag = useRef<{
     ids: string[];
@@ -597,13 +611,14 @@ export function Canvas({
   };
   return (
     <svg
-      id="server-canvas"
+      id={id}
       ref={ref}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1000 400"
       role="img"
       aria-label={asset.name}
       onPointerDown={(e) => {
+        if (readOnly) return;
         const target = e.target as Element;
         const box = target.closest("[data-box]");
         if (!box) {
@@ -612,6 +627,7 @@ export function Canvas({
         }
         const id = box.getAttribute("data-box")!;
         onSelect(id, e.shiftKey);
+        if (editMode === "configuration") return;
         const p = point(e);
         drag.current = {
           ids: target.closest("[data-label]")
@@ -621,7 +637,7 @@ export function Canvas({
               : [id],
           x: p.x,
           y: p.y,
-          label: !!target.closest("[data-label]"),
+          label: editMode === "labels" || !!target.closest("[data-label]"),
         };
         e.currentTarget.setPointerCapture(e.pointerId);
       }}
@@ -648,7 +664,7 @@ export function Canvas({
     >
       <defs>
         <pattern
-          id="guidegrid"
+          id={gridId}
           width="20"
           height="20"
           patternUnits="userSpaceOnUse"
@@ -669,7 +685,7 @@ export function Canvas({
         <rect
           width="1000"
           height="400"
-          fill="url(#guidegrid)"
+          fill={`url(#${gridId})`}
           pointerEvents="none"
         />
       )}
@@ -728,6 +744,8 @@ export function Canvas({
                 x2={lx}
                 y2={ly}
                 stroke="#6a86ad"
+                strokeWidth={b.lineWidth || 1}
+                strokeDasharray={b.lineStyle === "dashed" ? "6 4" : undefined}
               />
             )}
             <g data-label={b.id}>

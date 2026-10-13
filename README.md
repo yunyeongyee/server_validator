@@ -1,6 +1,6 @@
 # Server Validator · 서버 사양 검증 목업
 
-고객 요구사항과 견적을 **문서 입력 → 공통 사양/원문 검토 → 예비 판정 → 실제 이미지 구성**으로 검토하는 한국어 로컬 웹 도구입니다.
+고객 요구사항과 견적을 **원문·공통 사양·예비 판정·실제 이미지 구성을 한 화면에서**으로 검토하는 한국어 로컬 웹 도구입니다.
 
 기술 스택: **FastAPI · React/TypeScript · Pillow · 선택적 OpenAI · run.bat**.
 
@@ -22,6 +22,12 @@ GitHub 소스 ZIP과 실행용 ZIP 모두 `web/`의 빌드된 React 화면을 �
 - [버튼별 사용자 흐름](docs/user-flow.md)
 - [목업 화면](docs/mockup/README.md)
 - [Windows 실행·스텐실 가져오기·exe 포장](docs/windows-run.md)
+
+## 한 화면에서 비교하기
+
+원문 입력은 상단에서 펼치고 접습니다. 분석하면 왼쪽 비교표에 **요구사항·견적·항목별 예비 판정**이 같은 행으로 표시됩니다. 원문 검토 완료와 요구 충족은 구분합니다. 오른쪽에는 실제 전면·후면 이미지와 상세 판정/공식 조사 요청을 함께 표시합니다. 원문을 수정하면 이전 추출·판정·부품 배정을 해제하고 재분석합니다.
+
+이미지를 클릭하거나 **크게 편집**을 누르면 큰 편집 모달이 열립니다. `구성 / 라벨·연결선 / 좌표 보정` 탭으로 도구를 전환하고 확대할 수 있습니다. 선택한 영역의 라벨 수정·굵게·자동 배치·수평 정렬·연결선 실선/점선·굵기가 실제 캔버스와 PNG에 반영됩니다. 변경은 자동으로 비교 화면과 브라우저 임시 저장에 반영되며 **편집 완료** 또는 Esc로 돌아옵니다.
 
 ## 개발 실행
 
@@ -65,7 +71,7 @@ python scripts/verify_mockup.py
 python scripts/package_mockup.py
 ```
 
-단위/API 테스트는 31개입니다. 브라우저 검증은 별도 8002 포트, Playwright 및 Chromium을 사용해 문서·수정·재판정·실제 이미지·Pillow PNG·업로드·복원을 확인합니다. ZIP은 `dist/ServerValidator-Mockup.zip`에 생성되며 Node 의존성, 사용자 업로드, 키와 PC 보정을 포함하지 않습니다.
+단위/API 테스트는 33개입니다. 브라우저 검증은 별도 8002 포트, Playwright 및 Chromium을 사용해 문서·수정·재판정·실제 이미지·Pillow PNG·업로드·복원을 확인합니다. ZIP은 `dist/ServerValidator-Mockup.zip`에 생성되며 Node 의존성, 사용자 업로드, 키와 PC 보정을 포함하지 않습니다.
 
 자동 업데이트 배포는 `scripts/package_mockup.py`로 ZIP과 `release-info.json`을 생성한 뒤 커밋합니다. 이어 `python scripts/update_manifest.py <ZIP 커밋 SHA>`로 `dist/update.json`을 만들고 별도 커밋합니다. 두 커밋을 함께 main에 반영하여 업데이트 주소가 실제 커밋된 ZIP을 가리키게 합니다. ZIP과 업데이트 색인은 dist가 무시되므로 명시적으로 `git add -f`합니다.
 
