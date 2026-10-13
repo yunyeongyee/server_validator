@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "release_id": "72cd1adf4034bcfc8b7d6e0adee90f9b99a7205d429f7a989f5b578dd7f953a6",
-  "sha256": "4c3c1803880cd933ce3a38cbf871d5568da4cff020f75a310f065029da08fb0b",
-  "size": 7163058,
-  "url": "https://github.com/yunyeongyee/server_validator/raw/bcb9fda320ab466fd60ff193c46eb09bf5ef6af4/dist/ServerValidator-Mockup.zip"
+  "release_id": "b6832374e6b254b7d2acf704f4645d1ddc7209dd9e91026e0922200162346e4e",
+  "sha256": "86032b81c002acee828f82833725ddc4d6dc9adeb24e954de5c02df1e65243da",
+  "size": 7163175,
+  "url": "https://github.com/yunyeongyee/server_validator/raw/3365b47f27c08841701791574520dd7c00d46110/dist/ServerValidator-Mockup.zip"
 }
