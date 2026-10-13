@@ -182,6 +182,14 @@ def validate_ai(payload, raw, kind):
                 if f == "cal_count" and v == 0: supported |= bool(re.search(r"No\s*CAL", it["evidence"], re.I))
                 if not supported: raise ValueError(f"원문 근거 없이 만들어진 숫자 필드({f})가 감지되었습니다.")
             elif not isinstance(v, str) or len(v) > 300: raise ValueError("AI 텍스트 필드가 올바르지 않습니다.")
+        explicit = item(it["category"], it["evidence"])
+        fill_common(explicit, it["evidence"])
+        for field in ["quantity", "cores", "clock_ghz", "ports", "speed_gbps", "capacity_gb", "license_cores", "cal_count", "rpm"]:
+            if explicit[field] is not None and it[field] is not None and explicit[field] != it[field]:
+                raise ValueError("AI 값과 원문의 단위·수량 표기가 일치하지 않습니다: " + field)
+        for field in ["mount", "interface", "raid_level"]:
+            if it[field] is not None and explicit[field] != it[field]:
+                raise ValueError("원문에 명시되지 않은 AI 형식이 감지되었습니다: " + field)
         checked.append(it)
     unparsed = payload.get("unparsed")
     if not isinstance(unparsed, list) or not all(isinstance(s, str) and s in text for s in unparsed): raise ValueError("미추출 원문 검증에 실패했습니다.")

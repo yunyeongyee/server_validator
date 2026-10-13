@@ -6,3 +6,4 @@
 *.pdf binary
 *.vssx binary
 *.vsdx binary
+*.bat text eol=crlf

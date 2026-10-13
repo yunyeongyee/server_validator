@@ -1,47 +1,66 @@
 # Server Validator · 서버 사양 검증 목업
 
-고객 요구사항과 서버 견적을 붙여넣고 **공통 사양 검토 → 예비 판정 → 실제 이미지 구성** 흐름을 확인하는 한국어 웹 목업입니다.
+고객 요구사항과 견적을 **문서 입력 → 공통 사양/원문 검토 → 예비 판정 → 실제 이미지 구성**으로 검토하는 한국어 로컬 웹 도구입니다.
+
+기술 스택: **FastAPI · React/TypeScript · Pillow · 선택적 OpenAI · run.bat**.
+
+## 내 PC에서 실행
+
+1. GitHub의 [실행용 ZIP](https://github.com/yunyeongyee/server_validator/raw/refs/heads/main/dist/ServerValidator-Mockup.zip)을 받아 압축 해제합니다.
+2. Python 3.10 이상을 설치합니다.
+3. **run.bat를 더블클릭**합니다. 처음 실행할 때 Python 의존성을 설치하고 브라우저를 엽니다.
+4. 실행 창을 유지하고 **예제 불러오기 → 두 문서 예비 분석**으로 시작합니다. 종료는 실행 창에서 Ctrl+C입니다.
+
+ZIP에는 빌드된 React 화면이 포함되어 **Node.js·도메인·호스팅 없이** 실행합니다. 첫 의존성 설치에는 인터넷이 필요합니다. `start.cmd`는 `run.bat`로 연결하는 호환 진입점입니다. Windows 실행 자체는 이 Linux 환경에서 검증하지 않았습니다.
+
+큰 스텐실은 **이미지 보관함 → 스텐실 가져오기**에서 원본 VSSX/VSDX를 선택합니다(128MB 이하). EMF/WMF 변환에는 Inkscape가 PATH에 있어야 합니다. 또는 Visio에서 실제 PNG로 내보내 **이미지 추가**로 가져옵니다(20MB 이하). 채팅 파일 전송의 32MB 한도와 별개입니다.
+
+- [버튼별 사용자 흐름](docs/user-flow.md)
+- [목업 화면](docs/mockup/README.md)
+- [Windows 실행·스텐실 가져오기·exe 포장](docs/windows-run.md)
+
+## 개발 실행
 
 ```bash
-cd /workspace/server_validator
-python -m app.server --port 8000
+python -m pip install -r requirements-dev.txt
+cd frontend
+npm ci
+npm run build
+cd ..
+python launcher.py --no-browser
 ```
 
-Windows에서는 저장소 폴더에서 `py -3 -m app.server --port 8000`으로 실행합니다. 브라우저에서 호스트 `127.0.0.1`, 포트 `8000`으로 접속합니다. Python 3.10 이상이며 애플리케이션 실행에 pip/npm 설치는 필요 없습니다.
+화면 수정 중에는 별도 터미널의 `frontend`에서 `npm run dev`를 사용합니다. Vite는 `/api`, 실제 이미지 경로를 FastAPI로 연결합니다. 배포 화면은 `npm run build` 후 `web/`에 생성됩니다. 개발에는 Vite가 지원하는 Node.js 버전(현재 검증: Node 24)이 필요합니다.
 
-- [버튼별 사용자 흐름 정의](docs/user-flow.md)
-- [목업 화면](docs/mockup/README.md)
-- [Windows에서 직접 실행·큰 스텐실 가져오기·exe 빌드](docs/windows-run.md)
+## OpenAI는 선택 사항
 
-Windows에서는 `start.cmd`를 더블클릭하면 로컬 서버와 브라우저가 함께 열립니다(Python 필요). 도메인이나 호스팅은 필요 없습니다. exe 포장용 `scripts/build_windows.cmd`도 제공하지만 Windows 빌드·실행은 아직 검증하지 않았습니다.
+키가 없어도 문서 예비 추출·수동 검토·수치 비교·이미지 편집이 동작합니다. API 키 또는 SDK가 없으면 규칙 기반 결과임을 표시합니다. 호출 실패/스키마 오류/원문 근거 검증 실패에도 AI 결과를 사용하지 않고 예비 추출로 전환하며 경고를 남깁니다. 코어와 스레드, 명시 수량, RAID, 장착 형식을 원문과 검증합니다.
 
-‘예제 불러오기 → 두 문서 예비 분석’으로 고객이 제공한 R760 예제를 검토할 수 있습니다. CPU 코어 기준을 서버 전체로 선택하면 8코어 ×2 =16코어이고, CPU당으로 선택하면 요구 16코어와 다릅니다. RAID1은 견적에 없어서 보류합니다. OS의 No CAL과 별도 5팩 User CAL은 각각 추출합니다.
+OpenAI 사용 시 `python -m pip install -r requirements-ai.txt`(Windows: `run.bat --ai`)를 실행하고 프로세스의 `SV_OPENAI_API_KEY` 또는 `OPENAI_API_KEY`를 설정합니다. 값은 채팅·저장소·보정 파일에 넣지 않습니다. `OPENAI_MODEL` 기본값은 `gpt-4.1`입니다. API 사용에는 별도 비용이 있습니다.
 
-현재 동작: 규칙 기반 예비 추출, 원문 근거·수정 사유 검토, 수치 비교, 조사 요청 저장, 실제 스텐실 내장 이미지 추출, 이미지 보관함, 수동 영역/라벨/연결선 보정, 다중 선택, 부품 연결/배치, PNG 내보내기, 브라우저 임시 저장.
+정형 추출은 Chat Completions JSON Schema, 공식 자료 조사는 Responses 웹 검색을 사용합니다. 출처가 없는 조사 결과는 미확인 초안이며, 견적이나 판정을 자동 덮어쓰지 않습니다. 이 환경에는 키가 없어 **실제 OpenAI 호출은 미검증**이고, 키 없음/오류/검증 실패 경로와 모의 응답 처리를 테스트했습니다.
 
-아직 연결하지 않은 기능: **OpenAI 정형 추출·실제 웹 조사·실제 베이 자동 감지·최종 승인**. 이 목업은 이 기능들이 성공한 것처럼 결과를 표시하지 않습니다. `app/analysis.py`의 AI 스키마와 근거 검증기는 다음 구현의 출발점이며 실제 OpenAI 호출은 없습니다.
+## 정확도와 실제 이미지
 
-## 실제 스텐실
+예제의 CPU는 8코어 ×2 =총 16코어이며 CPU당 기준이면 요구 16코어와 다릅니다. 32GB ×4 =128GB입니다. RAID1은 견적에 없어서 확인 필요입니다. OS No CAL과 별도 5팩 User CAL은 독립 추출하고 CAL 수량을 비교합니다. 서버 모델·수량은 원문에 없으면 추정하지 않습니다.
 
-사용자가 제공한 `Dell-PowerEdge-XR.vssx`에서 실제 내장 EMF를 PNG로 변환한 69개 이미지를 포함합니다. 원본 이름·alias·내장 경로·원본 파일 SHA-256은 `static/assets/dell/manifest.json`에 보존합니다. 내장 이미지 조각은 전체 Visio 마스터의 XML 도형/텍스트/회전을 모두 재현한 결과와 다를 수 있습니다. XR 이미지는 R760/R660 구성에 대신 사용하지 않으며 별도 편집 연습으로 표시합니다.
+사용자 제공 `Dell-PowerEdge-XR.vssx`의 실제 내장 EMF를 변환한 69개 PNG를 포함합니다. 이름·alias·원본 SHA-256·내장 경로는 `static/assets/dell/manifest.json`에 있습니다. 내장 이미지 조각은 전체 Visio 마스터의 XML 도형·텍스트·회전을 모두 재현한 결과와 다를 수 있습니다. XR은 R760/R660 대신 쓰지 않으며 편집 연습으로 구분합니다. RackServers 원본은 채팅 전송 한도로 가져오지 못했으므로 도구에서 직접 가져옵니다.
 
-`Dell-PowerEdge-RackServers.vssx`는 채팅 파일 전송 도구의 32MB 한도로 이 머신에 가져오지 못했습니다. 웹 도구의 **스텐실 가져오기**에서 원본 파일을 직접 선택할 수 있습니다(128MB 이하). 지원 내장 이미지가 없거나 EMF 변환을 사용할 수 없으면 Visio에서 원본을 PNG로 내보내 가져오세요. 서버 그림을 임의로 그리지 않습니다.
+`data/servers.json`, `data/components.json`은 **공식 원문 검증 대기 후보 데이터**입니다. 이 클라우드의 Dell 요청은 프록시에서 차단되어 가이드 원문 확인을 완료하지 못했습니다. `verified:false`를 장착 가능의 확정 근거로 쓰지 않습니다. 실제 베이 자동 감지와 최종 승인 기능은 아직 구현 전이며 목업의 예정 흐름으로 명시합니다.
 
-EMF/WMF를 가져올 때만 Inkscape 실행 파일이 필요합니다. 이 클라우드 머신에서는 설치된 `/usr/bin/inkscape`로 실제 추출·변환을 확인했습니다. Windows에서는 Inkscape를 설치하고 PATH에 등록하거나 PNG를 가져옵니다. PNG/JPG 내장 이미지에는 변환기가 필요 없습니다.
+사용자 보정/연결/검토값은 브라우저에 저장하고 JSON으로 내보냅니다. 추가 이미지·스텐실은 `.local/assets` 또는 `SERVER_VALIDATOR_DATA_DIR/assets`에 저장합니다. Windows `run.bat` 실행 시 `%LOCALAPPDATA%\ServerValidator\assets`를 사용합니다. 이 PC 파일들은 커밋하지 않습니다. 텍스트는 CRLF를 유지합니다.
 
-## 공식 사양 및 보정 파일
-
-`data/servers.json`, `data/components.json`은 **검증 대기 후보 데이터**입니다. 이 환경의 프록시가 Dell 도메인을 403으로 차단해서 Technical Guide 원문 확인을 완료하지 못했습니다. `verified:false` 데이터는 장착 가능의 확정 근거로 쓰지 않습니다. CPU 종속 슬롯/라이저와 지원 부품번호가 없는 경우 장착 호환성은 검증 대기입니다.
-
-사용자 PC의 보정·이미지 연결은 localStorage와 IndexedDB에 저장하고 JSON으로 내보냅니다. `*.calibration.json`, `*.image-mappings.json`, `.local/`은 Git에서 제외합니다. 스텐실 추가 변환 결과의 서버 저장 경로는 `.local/assets/`이며 `SERVER_VALIDATOR_DATA_DIR`로 변경할 수 있습니다. 단일 사용자용 로컬 목업으로, 사용자 인증·팀 공유·운영 배포는 후속 작업입니다.
-
-텍스트 파일은 CRLF이며 `.gitattributes`에 `eol=crlf`를 지정했습니다. 브라우저에 저장한 문서는 다른 PC로 동기화되지 않습니다. API 키를 문서나 보정 파일에 넣지 마세요. 현재 목업은 OpenAI 키를 요청하거나 외부 API로 문서를 전송하지 않습니다.
-
-## 검증
+## 검증과 배포
 
 ```bash
 python -m unittest discover -s tests -v
+cd frontend
+npm run build
+cd ..
 python scripts/verify_mockup.py
+python scripts/package_mockup.py
 ```
 
-두 번째 명령은 Playwright와 Chromium이 설치된 검증 환경용입니다. `CHROMIUM_EXECUTABLE`로 브라우저 경로를 지정할 수 있습니다. 검증 스크립트는 별도 서버를 시작하고 문서 입력, 원문 검토/수정, 기준 변경, 예비 판정, 조사 요청, 실제 이미지 보정·배치·PNG, 임시 저장 복원 및 모바일 화면을 확인합니다.
+단위/API 테스트는 19개입니다. 브라우저 검증은 별도 8002 포트, Playwright 및 Chromium을 사용해 문서·수정·재판정·실제 이미지·Pillow PNG·업로드·복원을 확인합니다. ZIP은 `dist/ServerValidator-Mockup.zip`에 생성되며 Node 의존성, 사용자 업로드, 키와 PC 보정을 포함하지 않습니다.
+
+이번 배포는 사용자 승인에 따라 `main`에 올립니다. **이후 작업은 새 브랜치에서 시작 → 검증 → 릴리스 시 main 반영**으로 진행합니다. main을 직접 수정하거나 강제 푸시하지 않습니다.
