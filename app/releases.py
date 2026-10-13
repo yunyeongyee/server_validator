@@ -7,7 +7,7 @@ TEXT_SUFFIXES = {'.py', '.ts', '.tsx', '.js', '.css', '.html', '.json', '.md', '
 
 
 def file_digest(name, data):
-    if Path(name).suffix.lower() in TEXT_SUFFIXES or Path(name).name in {'.gitignore', '.gitattributes'}:
+    if Path(name).suffix.lower() in TEXT_SUFFIXES or Path(name).name in {'.gitignore', '.gitattributes', 'LICENSE'}:
         data = data.replace(b'\r\n', b'\n')
     return hashlib.sha256(data).hexdigest()
 

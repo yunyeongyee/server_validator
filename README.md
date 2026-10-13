@@ -65,7 +65,7 @@ python scripts/verify_mockup.py
 python scripts/package_mockup.py
 ```
 
-단위/API 테스트는 30개입니다. 브라우저 검증은 별도 8002 포트, Playwright 및 Chromium을 사용해 문서·수정·재판정·실제 이미지·Pillow PNG·업로드·복원을 확인합니다. ZIP은 `dist/ServerValidator-Mockup.zip`에 생성되며 Node 의존성, 사용자 업로드, 키와 PC 보정을 포함하지 않습니다.
+단위/API 테스트는 31개입니다. 브라우저 검증은 별도 8002 포트, Playwright 및 Chromium을 사용해 문서·수정·재판정·실제 이미지·Pillow PNG·업로드·복원을 확인합니다. ZIP은 `dist/ServerValidator-Mockup.zip`에 생성되며 Node 의존성, 사용자 업로드, 키와 PC 보정을 포함하지 않습니다.
 
 자동 업데이트 배포는 `scripts/package_mockup.py`로 ZIP과 `release-info.json`을 생성한 뒤 커밋합니다. 이어 `python scripts/update_manifest.py <ZIP 커밋 SHA>`로 `dist/update.json`을 만들고 별도 커밋합니다. 두 커밋을 함께 main에 반영하여 업데이트 주소가 실제 커밋된 ZIP을 가리키게 합니다. ZIP과 업데이트 색인은 dist가 무시되므로 명시적으로 `git add -f`합니다.
 

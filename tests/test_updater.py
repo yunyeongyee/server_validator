@@ -27,6 +27,10 @@ def release(data=None):
 
 
 class UpdateTests(unittest.TestCase):
+    def test_source_archive_line_endings_do_not_count_as_local_edits(self):
+        for name in ('LICENSE', 'app/analysis.py', 'README.md', '.gitattributes'):
+            self.assertEqual(file_digest(name, b'first\nsecond\n'), file_digest(name, b'first\r\nsecond\r\n'))
+
     @unittest.skipUnless(shutil.which('git'), 'Git is unavailable')
     def test_git_updates_only_clean_main_and_refuses_divergence(self):
         with tempfile.TemporaryDirectory() as temp:
